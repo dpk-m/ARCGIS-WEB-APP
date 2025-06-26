@@ -13,14 +13,8 @@ require([
   "esri/widgets/Legend",
   "esri/widgets/Sketch",
    "esri/widgets/CoordinateConversion",
-   "esri/widgets/Sketch/SketchViewModel",
    "esri/widgets/FeatureTable",
-  "esri/rest/geoprocessor",
-  "esri/Graphic", "esri/symbols/PictureMarkerSymbol", "esri/geometry/Point",
   "esri/layers/GraphicsLayer",
-  "esri/widgets/FeatureTable",
-  "esri/widgets/Sketch/SketchViewModel",
-   "esri/core/reactiveUtils",
 ], function (
   Map,
   MapView,
@@ -196,6 +190,7 @@ require([
                 });
 
                 featureTable.filterGeometry = geometry;
+                featureTable.refresh();
 
                 // Optional: Zoom to the selected features
                 view.goTo(results.features);
@@ -243,7 +238,7 @@ require([
                 <li>📊 View sales chart and attribute table</li>
                 <li>🖨️ Export and print the map</li>
               </ul>
-              <p><small>Built using ArcGIS JS API 4.x</small></p>
+              <p><small>Built using ArcGIS JS API 4.30</small></p>
             `;
             infoContent.style.padding = "10px";
             infoContent.style.width = "280px";
@@ -313,7 +308,6 @@ require([
                         fieldName: "county_name",
                         label: "Country name"
                       },
-                      
                       {
                         fieldName: "CORN_SALES_IN_DOLLARS",
                         label: "Corn Sale in USD",
